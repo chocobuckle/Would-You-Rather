@@ -1,0 +1,51 @@
+{
+	"root": true,
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"extends": "airbnb",
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"globals": {},
+	"rules": {
+		"no-confusing-arrow": "off",
+		"no-multi-spaces": "off",
+		"import/no-extraneous-dependencies": "warn",
+		"arrow-parens": ["error", "as-needed"],
+		"jsx-a11y/anchor-is-valid": "off",
+		"arrow-body-style": "off",
+		"import/extensions": "warn",
+		"import/no-unresolved": "warn",
+		"array-bracket-spacing": "off",
+		"comma-dangle": ["error", "never"],
+		"jsx-quotes": ["error", "prefer-single"],
+		"object-curly-spacing": "off",
+		"func-names": "off",
+		"linebreak-style": "off",
+		"no-alert": "warn",
+		"no-console": "warn",
+		"no-unused-vars": "warn",
+		"react/jsx-filename-extension": "off",
+		"react/forbid-prop-types": "warn",
+		"react/require-default-props": "warn",
+		"no-extend-native": "off",
+		"no-param-reassign": ["error", { "props": false }],
+		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+		"no-use-before-define": "warn",
+		"no-shadow": "warn",
+		"import/prefer-default-export": "warn",
+		"react/jsx-closing-bracket-location": [
+			"error",
+			{
+				"selfClosing": "tag-aligned",
+				"nonEmpty": "after-props"
+			}
+		]
+	}
+}
