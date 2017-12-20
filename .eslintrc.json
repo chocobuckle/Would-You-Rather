@@ -39,6 +39,7 @@
 		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
 		"no-use-before-define": "warn",
 		"no-shadow": "warn",
+		"react/no-typos": "warn",
 		"import/prefer-default-export": "warn",
 		"react/jsx-closing-bracket-location": [
 			"error",

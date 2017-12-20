@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled, { injectGlobal } from 'styled-components';
+import { Navigation } from 'components';
 import { HomeContainer } from 'containers';
 
 // eslint-disable-next-line no-unused-expressions
@@ -27,6 +28,7 @@ function App() {
   return (
     <BrowserRouter>
       <Wrapper>
+        <Navigation isAuthed={false} />
         <Switch>
           <Route exact path='/' component={HomeContainer} />
           <Route render={() => <p>Page Not Found!</p>} />
