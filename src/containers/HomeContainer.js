@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  } from 'prop-types';
-
+import { Home } from 'components';
 
 class HomeContainer extends Component {
   static propTypes = {
@@ -14,7 +14,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <div>
-        HomeContainer
+        <Home />
       </div>
     );
   }
