@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled, { injectGlobal } from 'styled-components';
+import { connect } from 'react-redux';
 import { Navigation } from 'components';
 import { HomeContainer } from 'containers';
 
@@ -24,11 +25,17 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-function App() {
+function mapStateToProps({ users }) {
+  return {
+    isAuthed: users.isAuthed
+  };
+}
+
+function App({ isAuthed }) {
   return (
     <BrowserRouter>
       <Wrapper>
-        <Navigation isAuthed={false} />
+        <Navigation isAuthed={isAuthed} />
         <Switch>
           <Route exact path='/' component={HomeContainer} />
           <Route render={() => <p>Page Not Found!</p>} />
@@ -38,4 +45,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

@@ -1,0 +1,29 @@
+{
+  "users": {
+    "userID": {
+      "isAuthed": bool,
+      "decisionsUserHasRepliedTo": {
+        "decisionID": number
+      }
+    }
+  },
+  "decisions": {
+    "decisionID": {
+      "title": string,
+      "userName": string,
+      "timestamp": Date.now(),
+      "userHasRepliedToThisDecision": bool
+    }
+  },
+  "decisionResults": {
+    "decisionID": {
+      "firstOption": {
+        "text": string,
+        "selectedCount": number
+      }
+      "secondOption"
+        "text": string,
+        "selectedCount": number
+    }
+  }
+}

@@ -17,7 +17,7 @@
 		"no-confusing-arrow": "off",
 		"no-multi-spaces": "off",
 		"import/no-extraneous-dependencies": "warn",
-		"arrow-parens": ["error", "as-needed"],
+		"arrow-parens": "off",
 		"jsx-a11y/anchor-is-valid": "off",
 		"arrow-body-style": "off",
 		"import/extensions": "warn",
