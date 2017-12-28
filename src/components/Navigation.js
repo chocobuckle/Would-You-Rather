@@ -20,10 +20,10 @@ function AuthedUI() {
 function Navigation({ isAuthed }) {
   return (
     <Wrapper isAuthed={isAuthed}>
-      <RouterLink to='/' isHomeLink >Home</RouterLink>
+      <RouterLink to='/'>Home</RouterLink>
       { isAuthed
         ? <AuthedUI />
-        : <RouterLink to='/auth' isAuthLink>Authenticate</RouterLink>
+        : <AuthRouterLink to='/auth'>Authenticate</AuthRouterLink>
       }
     </Wrapper>
   );
@@ -48,10 +48,13 @@ const NewDecision = styled.button`
 
 const RouterLink = styled(Link)`
   ${blueFont};
-  ${({ isAuthLink }) => isAuthLink === true ? 'margin-left: 0.75em;' : null}
   margin-top: 0.3em;
   font-size: 1.5rem;
   text-decoration: none;
+`;
+
+const AuthRouterLink = RouterLink.extend`
+  margin-left: 0.75em;
 `;
 
 export default Navigation;
