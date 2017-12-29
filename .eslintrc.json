@@ -15,6 +15,7 @@
 	"globals": {},
 	"rules": {
 		"no-confusing-arrow": "off",
+		"react/no-typos": "off",
 		"no-multi-spaces": "off",
 		"import/no-extraneous-dependencies": "warn",
 		"arrow-parens": "off",

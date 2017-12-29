@@ -39,6 +39,7 @@ function App({ isAuthed }) {
         <Switch>
           <Route exact path='/' component={HomeContainer} />
           <Route exact path='/auth' component={AuthenticateContainer} />
+          <Route exact path='/results' render={() => <p>Results Page</p>} />
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
       </Wrapper>

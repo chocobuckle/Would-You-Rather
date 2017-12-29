@@ -13,7 +13,8 @@ class AuthenticateContainer extends Component {
 
   handleAuth = (e) => {
     e.preventDefault();
-    this.props.fetchAndHandleAuthedUser();
+    this.props.fetchAndHandleAuthedUser()
+      .then(() => this.props.history.replace('results'));
   }
 
   render() {
@@ -28,7 +29,8 @@ class AuthenticateContainer extends Component {
   }
 }
 
-function mapStateToProps({ isFetching }) {
+function mapStateToProps({ users }) {
+  const { isFetching } = users;
   return {
     isFetching
   };

@@ -1,10 +1,12 @@
 import auth, { logout, saveUser } from 'helpers/auth';
+import formatUserInfo from 'helpers/utils';
 
 const AUTH_USER_SUCCESS = 'AUTH_USER_SUCCESS';
 const UNAUTH_USER_SUCCESS = 'UNAUTH_USER_SUCCESS';
 const FETCHING_USER = 'FETCHING_USER';
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
+// const REMOVE_FETCHING = 'REMOVE_FETCHING';
 
 const initialState = {
   isAuthed: false,
@@ -47,10 +49,22 @@ const fetchingUserSuccess = (uid, user, timestamp) => ({
   timestamp
 });
 
+// const removeFetching = () => ({
+//   type: REMOVE_FETCHING
+// });
+
 export function fetchAndHandleAuthedUser() {
   return function (dispatch) {
     dispatch(fetchingUser());
-    auth().then((data) => console.log(data));
+    return auth()
+      .then(({ user }) => {
+        const userData = user.providerData[0];
+        const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid);
+        return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()));
+      })
+      .then(({ user }) => saveUser(user))
+      .then((user) => dispatch(authUserSuccess(user.uid)))
+      .catch((error) => dispatch(fetchingUserFailure(error)));
   };
 }
 
@@ -73,6 +87,7 @@ export default function users(state = initialState, action) {
       return {
         ...state,
         isAuthed: true,
+        isFetching: false,
         authedID: action.authedID
       };
     case UNAUTH_USER_SUCCESS:
@@ -104,6 +119,11 @@ export default function users(state = initialState, action) {
         isFetching: false,
         error: action.error
       };
+    // case REMOVE_FETCHING:
+    //   return {
+    //     ...state,
+    //     isFetching: false
+    //   };
     default:
       return state;
   }
