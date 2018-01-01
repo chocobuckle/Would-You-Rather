@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled, { injectGlobal } from 'styled-components';
 import { connect } from 'react-redux';
 import { Navigation } from 'components';
-import { HomeContainer, AuthenticateContainer } from 'containers';
+import { HomeContainer, AuthenticateContainer, ResultsContainer } from 'containers';
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -39,7 +39,7 @@ function App({ isAuthed }) {
         <Switch>
           <Route exact path='/' component={HomeContainer} />
           <Route exact path='/auth' component={AuthenticateContainer} />
-          <Route exact path='/results' render={() => <p>Results Page</p>} />
+          <Route exact path='/results' component={ResultsContainer} />
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
       </Wrapper>
