@@ -6,7 +6,7 @@ const UNAUTH_USER_SUCCESS = 'UNAUTH_USER_SUCCESS';
 const FETCHING_USER = 'FETCHING_USER';
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
-// const REMOVE_FETCHING = 'REMOVE_FETCHING';
+const REMOVE_FETCHING = 'REMOVE_FETCHING';
 
 const initialState = {
   isAuthed: false,
@@ -29,7 +29,7 @@ const authUserSuccess = (uid) => ({
   authedID: uid
 });
 
-const unAuthUserSuccess = () => ({
+export const unAuthUserSuccess = () => ({
   type: UNAUTH_USER_SUCCESS
 });
 
@@ -42,16 +42,16 @@ const fetchingUserFailure = (error) => ({
   error
 });
 
-const fetchingUserSuccess = (uid, user, timestamp) => ({
+export const fetchingUserSuccess = (uid, user, timestamp) => ({
   type: FETCHING_USER_SUCCESS,
   uid,
   user,
   timestamp
 });
 
-// const removeFetching = () => ({
-//   type: REMOVE_FETCHING
-// });
+export const removeFetching = () => ({
+  type: REMOVE_FETCHING
+});
 
 export function fetchAndHandleAuthedUser() {
   return function (dispatch) {
@@ -119,11 +119,11 @@ export default function users(state = initialState, action) {
         isFetching: false,
         error: action.error
       };
-    // case REMOVE_FETCHING:
-    //   return {
-    //     ...state,
-    //     isFetching: false
-    //   };
+    case REMOVE_FETCHING:
+      return {
+        ...state,
+        isFetching: false
+      };
     default:
       return state;
   }

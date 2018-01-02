@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
-import {  } from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import { blueFont } from 'shared-styles';
 
-class Home extends Component {
-  static propTypes = {
-
-  };
-
-  state = {
-
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        <Header>Would You Rather?</Header>
-        <SubHeader>The 100 Year Old American Classic</SubHeader>
-      </Wrapper>
-    );
-  }
+function Home() {
+  return (
+    <Wrapper>
+      <Header>Would You Rather?</Header>
+      <SubHeader>The 100 Year Old American Classic</SubHeader>
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.div`

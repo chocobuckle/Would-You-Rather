@@ -1,8 +1,8 @@
 import React from 'react';
 import { func, bool } from 'prop-types';
-import FacebookAuthButton from './FacebookAuthButton';
 import styled from 'styled-components';
 import { blueFont } from 'shared-styles';
+import FacebookAuthButton from './FacebookAuthButton';
 
 Authenticate.propTypes = {
   isFetching: bool.isRequired,

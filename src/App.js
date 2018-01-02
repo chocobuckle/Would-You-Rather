@@ -1,9 +1,10 @@
 import React from 'react';
+import { bool } from 'prop-types';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import styled, { injectGlobal } from 'styled-components';
+import { injectGlobal } from 'styled-components';
 import { connect } from 'react-redux';
 import { Navigation } from 'components';
-import { HomeContainer, AuthenticateContainer, ResultsContainer } from 'containers';
+import { HomeContainer, AuthenticateContainer, ResultsContainer, MainContainer } from 'containers';
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -18,23 +19,18 @@ injectGlobal`
   }
 `;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-`;
+App.propTypes = {
+  isFetching: bool.isRequired,
+  isAuthed: bool.isRequired
+};
 
-function mapStateToProps({ users }) {
-  return {
-    isAuthed: users.isAuthed
-  };
-}
-
-function App({ isAuthed }) {
+function App({ isFetching, isAuthed }) {
+  if (isFetching === true) {
+    return null;
+  }
   return (
     <BrowserRouter>
-      <Wrapper>
+      <MainContainer>
         <Navigation isAuthed={isAuthed} />
         <Switch>
           <Route exact path='/' component={HomeContainer} />
@@ -42,9 +38,17 @@ function App({ isAuthed }) {
           <Route exact path='/results' component={ResultsContainer} />
           <Route render={() => <p>Page Not Found!</p>} />
         </Switch>
-      </Wrapper>
+      </MainContainer>
     </BrowserRouter>
   );
+}
+
+function mapStateToProps({ users }) {
+  const { isFetching, isAuthed } = users;
+  return {
+    isFetching,
+    isAuthed
+  };
 }
 
 export default connect(mapStateToProps)(App);

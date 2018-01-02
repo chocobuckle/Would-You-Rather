@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { bool, func } from 'prop-types';
+import { oneOfType, string, number, func, object, bool } from 'prop-types';
 import { connect } from 'react-redux';
 import { Authenticate } from 'components';
 import * as usersActionCreators from 'ducks/users';
@@ -8,7 +8,13 @@ import { bindActionCreators } from 'redux';
 class AuthenticateContainer extends Component {
   static propTypes = {
     isFetching: bool.isRequired,
-    fetchAndHandleAuthedUser: func.isRequired
+    fetchAndHandleAuthedUser: func.isRequired,
+    history: oneOfType([
+      number.isRequired,
+      string.isRequired,
+      func.isRequired,
+      object.isRequired
+    ]).isRequired
   };
 
   handleAuth = (e) => {

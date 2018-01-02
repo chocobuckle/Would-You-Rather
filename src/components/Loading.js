@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 class Loading extends Component {
   static propTypes = {
-    text: string.isRequired,
-    speed: number.isRequired
+    text: string,
+    speed: number
   }
 
   static defaultProps = {
