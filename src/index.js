@@ -28,7 +28,7 @@ const configureStore = () => {
   return storeWithHMREnabled;
 };
 
-const store = configureStore();
+export const store = configureStore();
 
 const rootEl = document.getElementById('root');
 

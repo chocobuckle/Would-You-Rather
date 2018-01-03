@@ -4,6 +4,10 @@ export default function auth() {
   return firebaseAuth().signInWithPopup(new firebaseAuth.FacebookAuthProvider());
 }
 
+export function checkIfAuthed(store) {
+  return store.getState().users.isAuthed;
+}
+
 export function logout() {
   return firebaseAuth().signOut();
 }
