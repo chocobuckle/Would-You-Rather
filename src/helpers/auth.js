@@ -8,6 +8,10 @@ export function logout() {
   return firebaseAuth().signOut();
 }
 
+export function checkIfAuthed (store) {
+  return store.getState().users.isAuthed
+}
+
 export function saveUser(user) {
   return ref.child(`users/${user.uid}/info`)
     .set(user)
