@@ -25,29 +25,6 @@ App.propTypes = {
   isAuthed: bool.isRequired
 };
 
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={(props) => {
-//       const { from } = props.location.state || { from: { pathname: '/' } };
-//       return checkIfAuthed(store) === true
-//         ? <Component {...props} />
-//         : <Redirect to={{
-//             pathname: '/auth',
-//             state: from
-//           }} />;
-//     }}
-//   />
-// );
-
-// PrivateRoute.propTypes = {
-//   location: oneOfType([
-//     string.isRequired,
-//     object.isRequired
-//   ]),
-//   component: func.isRequired
-// };
-
 function App({ isFetching, isAuthed }) {
   // if (isFetching === true) {
   //   return null;

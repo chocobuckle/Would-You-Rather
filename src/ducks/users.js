@@ -91,10 +91,7 @@ export default function users(state = initialState, action) {
         authedID: action.authedID
       };
     case UNAUTH_USER_SUCCESS:
-      return {
-        ...state,
-        ...initialState
-      };
+      return initialState;
     case FETCHING_USER:
       return {
         ...state,
