@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { func, bool } from 'prop-types';
 import { AuthedUI } from 'components';
+import { func } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as modalActionCreators from 'ducks/modal';
 
 class AuthedUIContainer extends Component {
   static propTypes = {
-    modalIsOpen: bool.isRequired,
     openModal: func.isRequired
   };
 
@@ -16,25 +15,11 @@ class AuthedUIContainer extends Component {
     this.props.openModal();
   }
 
-  handleModalSubmit = (e) => {
-    e.preventDefault();
-  }
-
   render() {
     return (
-      <AuthedUI
-        handleNewDecisionClick={this.handleNewDecisionClick}
-        handleModalSubmit={this.handleModalSubmit}
-        modalIsOpen={this.props.modalIsOpen}
-      />
+      <AuthedUI handleNewDecisionClick={this.handleNewDecisionClick} />
     );
   }
-}
-
-function mapStateToProps({ modal }) {
-  return {
-    modalIsOpen: modal.modalIsOpen
-  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -43,4 +28,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthedUIContainer);
+export default connect(null, mapDispatchToProps)(AuthedUIContainer);

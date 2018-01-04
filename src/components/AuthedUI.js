@@ -1,25 +1,18 @@
 import React from 'react';
-import { func, bool } from 'prop-types';
+import { func } from 'prop-types';
 import styled from 'styled-components';
-import { Modal } from 'components';
+import { ModalContainer } from 'containers';
 import { RouterLink } from './Navigation';
 
 AuthedUI.propTypes = {
-  handleNewDecisionClick: func.isRequired,
-  handleModalSubmit: func.isRequired,
-  modalIsOpen: bool.isRequired
+  handleNewDecisionClick: func.isRequired
 };
 
-function AuthedUI({ handleNewDecisionClick, handleModalSubmit, modalIsOpen }) {
+function AuthedUI({ handleNewDecisionClick }) {
   return (
     <div>
-      <NewDecision
-        onClick={handleNewDecisionClick}>
-        New Decision
-        <Modal
-          modalIsOpen={modalIsOpen}
-          handleModalSubmit={handleModalSubmit}
-        />
+      <NewDecision onClick={handleNewDecisionClick}>New Decision
+        <ModalContainer />
       </NewDecision>
       <RouterLink to='/logout'>Logout</RouterLink>
     </div>
