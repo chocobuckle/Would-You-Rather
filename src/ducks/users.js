@@ -1,4 +1,4 @@
-import auth, { logout, saveUser } from 'helpers/auth';
+import auth, { saveUser } from 'helpers/auth';
 import formatUserInfo from 'helpers/utils';
 
 const AUTH_USER_SUCCESS = 'AUTH_USER_SUCCESS';

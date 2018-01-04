@@ -1,20 +1,21 @@
 import { saveDecision } from 'helpers/api';
-import { ref } from 'config/constants';
 
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const UPDATE_DECISION_TEXT = 'UPDATE_DECISION_TEXT';
 
 const initialState = {
-  modalOpen: false,
+  modalIsOpen: false,
   title: '',
   firstDecisionText: '',
   secondDecisionText: ''
 };
 
-export const openModal = () => ({
-  type: OPEN_MODAL
-});
+export const openModal = () => {
+  return {
+    type: OPEN_MODAL
+  };
+};
 
 export const closeModal = () => ({
   type: CLOSE_MODAL
@@ -39,7 +40,7 @@ export default function modal(state = initialState, action) {
     case OPEN_MODAL:
       return {
         ...state,
-        modalOpen: true
+        modalIsOpen: true
       };
     case CLOSE_MODAL:
       return initialState;

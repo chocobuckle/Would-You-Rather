@@ -3,26 +3,18 @@ import { bool } from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { blueFont } from 'shared-styles';
+import  { AuthedUIContainer } from 'containers';
 
 Navigation.propTypes = {
   isAuthed: bool.isRequired
 };
-
-function AuthedUI() {
-  return (
-    <div>
-      <NewDecision>New Decision</NewDecision>
-      <RouterLink to='/logout'>Logout</RouterLink>
-    </div>
-  );
-}
 
 function Navigation({ isAuthed }) {
   return (
     <Wrapper isAuthed={isAuthed}>
       <RouterLink to='/'>Home</RouterLink>
       { isAuthed
-        ? <AuthedUI />
+        ? <AuthedUIContainer />
         : <AuthRouterLink to='/auth'>Authenticate</AuthRouterLink>
       }
     </Wrapper>
@@ -36,17 +28,7 @@ const Wrapper = styled.div`
   width: 70%;
 `;
 
-const NewDecision = styled.button`
-  background-color: #4a90e2;
-  border-radius: 0.25em;
-  cursor: pointer;
-  color: white;
-  font-size: 1.5rem;
-  margin-right: 1em;
-  padding: 0.2em 0.3em;
-`;
-
-const RouterLink = styled(Link)`
+export const RouterLink = styled(Link)`
   ${blueFont};
   margin-top: 0.3em;
   font-size: 1.5rem;

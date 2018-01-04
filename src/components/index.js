@@ -4,3 +4,5 @@ export { default as Authenticate } from './Authenticate';
 export { default as Loading } from './Loading';
 export { default as Results } from './Results';
 export { default as FacebookAuthButton } from './FacebookAuthButton';
+export { default as Modal } from './Modal';
+export { default as AuthedUI } from './AuthedUI';
