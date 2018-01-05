@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, func } from 'prop-types';
+import { bool, string, func } from 'prop-types';
 import { default as ReactModal } from 'react-modal';
 import styled from 'styled-components';
 import { blueFont } from 'shared-styles';
@@ -7,12 +7,24 @@ import { blueFont } from 'shared-styles';
 ReactModal.setAppElement('body');
 
 Modal.propTypes = {
+  title: string.isRequired,
+  firstDecision: string.isRequired,
+  secondDecision: string.isRequired,
+  handleInputText: func.isRequired,
+  handleModalSubmit: func.isRequired,
   modalIsOpen: bool.isRequired,
-  closeModal: func.isRequired,
-  handleModalSubmit: func.isRequired
+  closeModal: func.isRequired
 };
 
-function Modal({ modalIsOpen, closeModal, handleModalSubmit }) {
+function Modal({
+  title,
+  firstDecision,
+  secondDecision,
+  handleInputText,
+  handleModalSubmit,
+  modalIsOpen,
+  closeModal
+}) {
   return (
     <ReactModal
       isOpen={modalIsOpen}
@@ -20,12 +32,27 @@ function Modal({ modalIsOpen, closeModal, handleModalSubmit }) {
       onRequestClose={closeModal}
       contentLabel='New Decision Modal'>
       <Wrapper>
-        <Header>Would you rather...<CloseButton>X</CloseButton></Header>
+        <Header>Would you rather...<CloseButton onClick={closeModal}>X</CloseButton></Header>
         <InputWrapper>
-          <Title placeholder='Title' />
-          <TextArea placeholder='First Decision' />
+          <Title
+            placeholder='Title'
+            maxLength={70}
+            value={title}
+            onChange={(e) => handleInputText('title', e.target.value)}
+          />
+          <TextArea
+            placeholder='First Decision'
+            value={firstDecision}
+            maxLength={140}
+            onChange={(e) => handleInputText('firstDecision', e.target.value)}
+          />
           <Or>OR</Or>
-          <TextArea placeholder='Second Decision' />
+          <TextArea
+            placeholder='Second Decision'
+            value={secondDecision}
+            maxLength={140}
+            onChange={(e) => handleInputText('secondDecision', e.target.value)}
+          />
           <SubmitButton onClick={handleModalSubmit}>Submit</SubmitButton>
         </InputWrapper>
       </Wrapper>

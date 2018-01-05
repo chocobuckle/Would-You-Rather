@@ -11,9 +11,8 @@ AuthedUI.propTypes = {
 function AuthedUI({ handleNewDecisionClick }) {
   return (
     <div>
-      <NewDecision onClick={handleNewDecisionClick}>New Decision
-        <ModalContainer />
-      </NewDecision>
+      <NewDecision onClick={handleNewDecisionClick}>New Decision</NewDecision>
+      <ModalContainer />
       <RouterLink to='/logout'>Logout</RouterLink>
     </div>
   );
@@ -26,7 +25,13 @@ const NewDecision = styled.button`
   color: white;
   font-size: 1.5rem;
   margin-right: 1em;
+  outline: none;
   padding: 0.2em 0.3em;
+  transition: background-color 0.1s;
+
+  &:hover {
+    background-color: #1877e6;
+  }
 `;
 
 export default AuthedUI;

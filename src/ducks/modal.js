@@ -2,27 +2,31 @@ import { saveDecision } from 'helpers/api';
 
 const OPEN_MODAL = 'OPEN_MODAL';
 const CLOSE_MODAL = 'CLOSE_MODAL';
-const UPDATE_DECISION_TEXT = 'UPDATE_DECISION_TEXT';
+const UPDATE_DECISION = 'UPDATE_DECISION';
 
 const initialState = {
   modalIsOpen: false,
   title: '',
-  firstDecisionText: '',
-  secondDecisionText: ''
+  firstDecision: '',
+  secondDecision: ''
 };
 
 export const openModal = () => {
+  console.log('Open modal request sent!');
   return {
     type: OPEN_MODAL
   };
 };
 
-export const closeModal = () => ({
-  type: CLOSE_MODAL
-});
+export const closeModal = () => {
+  console.log('Close modal request sent!');
+  return {
+    type: CLOSE_MODAL
+  };
+};
 
 export const updateDecisionText = (whichDecision, newText) => ({
-  type: UPDATE_DECISION_TEXT,
+  type: UPDATE_DECISION,
   whichDecision,
   newText
 });
@@ -44,7 +48,7 @@ export default function modal(state = initialState, action) {
       };
     case CLOSE_MODAL:
       return initialState;
-    case UPDATE_DECISION_TEXT:
+    case UPDATE_DECISION:
       return {
         ...state,
         [action.whichDecision]: action.newText

@@ -3,27 +3,28 @@
     "userID": {
       "isAuthed": bool,
       "decisionsUserHasRepliedTo": {
-        "decisionID": number
+        "decisionID"
       }
     }
   },
   "decisions": {
     "decisionID": {
+      "decisionID",
       "title": string,
-      "userName": string,
+      "user": {
+        name,
+        userID
+      },
       "timestamp": Date.now(),
-      "userHasRepliedToThisDecision": bool
-    }
-  },
-  "decisionResults": {
-    "decisionID": {
+      "userHasRepliedToThisDecision": bool,
       "firstOption": {
         "text": string,
         "selectedCount": number
       }
-      "secondOption"
+      "secondOption" {
         "text": string,
         "selectedCount": number
+      }
     }
   }
 }
