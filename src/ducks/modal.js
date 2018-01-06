@@ -12,30 +12,30 @@ const initialState = {
 };
 
 export const openModal = () => {
-  console.log('Open modal request sent!');
   return {
     type: OPEN_MODAL
   };
 };
 
 export const closeModal = () => {
-  console.log('Close modal request sent!');
   return {
     type: CLOSE_MODAL
   };
 };
 
-export const updateDecisionText = (whichDecision, newText) => ({
+export const updateDecisionText = (whichDecision, text) => ({
   type: UPDATE_DECISION,
   whichDecision,
-  newText
+  text
 });
 
 export function saveAndCloseModal(decision) {
   return (dispatch) => {
     saveDecision(decision)
       .then(dispatch(closeModal()))
-      .catch((error) => console.warn(`Error saving decision: ${error}`));
+      .catch((error) => {
+        throw new Error(`Error saving decision: ${error}`);
+      });
   };
 }
 
@@ -51,7 +51,7 @@ export default function modal(state = initialState, action) {
     case UPDATE_DECISION:
       return {
         ...state,
-        [action.whichDecision]: action.newText
+        [action.whichDecision]: action.text
       };
     default:
       return state;

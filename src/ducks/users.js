@@ -1,5 +1,5 @@
 import auth, { saveUser } from 'helpers/auth';
-import formatUserInfo from 'helpers/utils';
+import { formatUserInfo } from 'helpers/utils';
 
 const AUTH_USER_SUCCESS = 'AUTH_USER_SUCCESS';
 const UNAUTH_USER_SUCCESS = 'UNAUTH_USER_SUCCESS';
@@ -18,8 +18,7 @@ const initialUserState = {
   lastUpdated: 0,
   info: {
     name: '',
-    uid: '',
-    avatar: ''
+    uid: ''
   },
   decisionsMade: {}
 };

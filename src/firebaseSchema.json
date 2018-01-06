@@ -13,15 +13,15 @@
       "title": string,
       "user": {
         name,
-        userID
+        uid
       },
       "timestamp": Date.now(),
       "userHasRepliedToThisDecision": bool,
-      "firstOption": {
+      "firstDecision": {
         "text": string,
         "selectedCount": number
       }
-      "secondOption" {
+      "secondDecision" {
         "text": string,
         "selectedCount": number
       }

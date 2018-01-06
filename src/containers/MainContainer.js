@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { firebaseAuth } from 'config/constants';
 import { bindActionCreators } from 'redux';
 import * as usersActionCreators from 'ducks/users';
-import formatUserInfo from 'helpers/utils';
+import { formatUserInfo } from 'helpers/utils';
 import { connect } from 'react-redux';
 
 class MainContainer extends Component {

@@ -13,7 +13,8 @@ Modal.propTypes = {
   handleInputText: func.isRequired,
   handleModalSubmit: func.isRequired,
   modalIsOpen: bool.isRequired,
-  closeModal: func.isRequired
+  closeModal: func.isRequired,
+  isSubmitDisabled: func.isRequired
 };
 
 function Modal({
@@ -23,7 +24,8 @@ function Modal({
   handleInputText,
   handleModalSubmit,
   modalIsOpen,
-  closeModal
+  closeModal,
+  isSubmitDisabled
 }) {
   return (
     <ReactModal
@@ -53,7 +55,10 @@ function Modal({
             maxLength={140}
             onChange={(e) => handleInputText('secondDecision', e.target.value)}
           />
-          <SubmitButton onClick={handleModalSubmit}>Submit</SubmitButton>
+          <SubmitButton
+            disabled={isSubmitDisabled(firstDecision, secondDecision, title)}
+            onClick={handleModalSubmit}>Submit
+          </SubmitButton>
         </InputWrapper>
       </Wrapper>
     </ReactModal>
@@ -119,7 +124,7 @@ const InputWrapper = Wrapper.extend`
 `;
 
 const SubmitButton = styled.button`
-  background-color: #c6c6c6;
+  background-color: #4a90e2;
   border-radius: 0.2em;
   border-style: 0;
   border-style: none;
@@ -132,7 +137,11 @@ const SubmitButton = styled.button`
   transition: background-color 0.1s;
 
   &:hover {
-    background-color: #a4a4a6;
+    background-color: #1877e6;
+  }
+
+  &:disabled {
+    background-color: #c6c6c6;
   }
 `;
 
