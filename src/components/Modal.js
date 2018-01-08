@@ -32,32 +32,37 @@ function Modal({
       isOpen={modalIsOpen}
       style={modalStyle}
       onRequestClose={closeModal}
-      contentLabel='New Decision Modal'>
+      contentLabel="New Decision Modal"
+    >
       <Wrapper>
-        <Header>Would you rather...<CloseButton onClick={closeModal}>X</CloseButton></Header>
+        <Header>
+          Would you rather...<CloseButton onClick={closeModal}>X</CloseButton>
+        </Header>
         <InputWrapper>
           <Title
-            placeholder='Title'
+            placeholder="Title"
             maxLength={70}
             value={title}
             onChange={(e) => handleInputText('title', e.target.value)}
           />
           <TextArea
-            placeholder='First Decision'
+            placeholder="First Decision"
             value={firstDecision}
             maxLength={140}
             onChange={(e) => handleInputText('firstDecision', e.target.value)}
           />
           <Or>OR</Or>
           <TextArea
-            placeholder='Second Decision'
+            placeholder="Second Decision"
             value={secondDecision}
             maxLength={140}
             onChange={(e) => handleInputText('secondDecision', e.target.value)}
           />
           <SubmitButton
             disabled={isSubmitDisabled(firstDecision, secondDecision, title)}
-            onClick={handleModalSubmit}>Submit
+            onClick={handleModalSubmit}
+          >
+            Submit
           </SubmitButton>
         </InputWrapper>
       </Wrapper>
@@ -100,8 +105,7 @@ const Or = styled.span`
 `;
 
 const Header = styled.h2`
-  ${blueFont}
-  background-color: white;
+  ${blueFont} background-color: white;
   margin: 0;
   padding: 0.4em 0.5em;
   width: 100%;

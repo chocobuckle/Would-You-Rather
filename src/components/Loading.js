@@ -9,7 +9,7 @@ class Loading extends Component {
   }
 
   static defaultProps = {
-    text: 'Loading',
+    text: 'Hold your ponies',
     speed: 300
   }
 
@@ -51,6 +51,7 @@ class Loading extends Component {
 }
 
 const Text = styled.p`
+  font-size: 1.5rem;
   text-align: center;
   margin: 0;
 `;

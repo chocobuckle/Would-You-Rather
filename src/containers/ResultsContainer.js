@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {  } from 'prop-types';
 import { Results } from 'components';
-
+import { setAndHandleDecisionsListener } from 'ducks/decisions';
 
 class ResultsContainer extends Component {
   static propTypes = {
 
   };
 
-  state = {
-
-  };
+  componentDidMount() {
+    setAndHandleDecisionsListener();
+  }
 
   render() {
     return (

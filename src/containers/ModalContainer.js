@@ -23,26 +23,45 @@ class ModalContainer extends Component {
 
   handleInputText = (whichInput, text) => {
     this.props.updateDecisionText(whichInput, text);
-  }
+  };
 
   handleModalSubmit = (e) => {
     e.preventDefault();
-    const { title, firstDecision, secondDecision, userInfo, saveAndCloseModal } = this.props;
-    const decision = formatDecision(title, firstDecision, secondDecision, userInfo);
+    const {
+      title,
+      firstDecision,
+      secondDecision,
+      userInfo,
+      saveAndCloseModal
+    } = this.props;
+    const decision = formatDecision(
+      title,
+      firstDecision,
+      secondDecision,
+      userInfo
+    );
     saveAndCloseModal(decision);
-  }
+  };
 
   isSubmitDisabled = (firstDecision, secondDecision, title) => {
-    return firstDecision.length <= 0
-      || firstDecision.length > 140
-      || secondDecision.length <= 0
-      || secondDecision.length > 140
-      || title.length <= 0
-      || title.length > 140;
-  }
+    return (
+      firstDecision.length <= 0 ||
+      firstDecision.length > 140 ||
+      secondDecision.length <= 0 ||
+      secondDecision.length > 140 ||
+      title.length <= 0 ||
+      title.length > 140
+    );
+  };
 
   render() {
-    const { modalIsOpen, closeModal, title, firstDecision, secondDecision } = this.props;
+    const {
+      modalIsOpen,
+      closeModal,
+      title,
+      firstDecision,
+      secondDecision
+    } = this.props;
     return (
       <Modal
         title={title}
@@ -71,9 +90,12 @@ function mapStateToProps({ modal, users }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    ...modalActionCreators
-  }, dispatch);
+  return bindActionCreators(
+    {
+      ...modalActionCreators
+    },
+    dispatch
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer);

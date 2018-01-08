@@ -23,7 +23,7 @@ const initialUserState = {
   decisionsMade: {}
 };
 
-const authUserSuccess = (uid) => ({
+const authUserSuccess = uid => ({
   type: AUTH_USER_SUCCESS,
   authedID: uid
 });
@@ -36,7 +36,7 @@ const fetchingUser = () => ({
   type: FETCHING_USER
 });
 
-const fetchingUserFailure = (error) => ({
+const fetchingUserError = error => ({
   type: FETCHING_USER_FAILURE,
   error
 });
@@ -53,17 +53,21 @@ export const removeFetching = () => ({
 });
 
 export function fetchAndHandleAuthedUser() {
-  return function (dispatch) {
+  return function(dispatch) {
     dispatch(fetchingUser());
     return auth()
       .then(({ user }) => {
         const userData = user.providerData[0];
-        const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid);
+        const userInfo = formatUserInfo(
+          userData.displayName,
+          userData.photoURL,
+          user.uid
+        );
         return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()));
       })
       .then(({ user }) => saveUser(user))
-      .then((user) => dispatch(authUserSuccess(user.uid)))
-      .catch((error) => dispatch(fetchingUserFailure(error)));
+      .then(user => dispatch(authUserSuccess(user.uid)))
+      .catch(error => dispatch(fetchingUserError(error)));
   };
 }
 
@@ -99,16 +103,16 @@ export default function users(state = initialState, action) {
     case FETCHING_USER_SUCCESS:
       return action.user === null
         ? {
-          ...state,
-          error: '',
-          isFetching: false
-        }
+            ...state,
+            error: '',
+            isFetching: false
+          }
         : {
-          ...state,
-          isFetching: false,
-          error: '',
-          [action.uid]: user(state[action.uid], action)
-        };
+            ...state,
+            isFetching: false,
+            error: '',
+            [action.uid]: user(state[action.uid], action)
+          };
     case FETCHING_USER_FAILURE:
       return {
         ...state,

@@ -3,13 +3,13 @@
     "userID": {
       "isAuthed": bool,
       "decisionsUserHasRepliedTo": {
-        "decisionID"
+        "decisionId"
       }
     }
   },
   "decisions": {
-    "decisionID": {
-      "decisionID",
+    "decisionId": {
+      "decisionId",
       "title": string,
       "user": {
         name,
