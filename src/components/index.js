@@ -6,3 +6,4 @@ export { default as Results } from './Results';
 export { default as FacebookAuthButton } from './FacebookAuthButton';
 export { default as Modal } from './Modal';
 export { default as AuthedUI } from './AuthedUI';
+export { default as Spinner } from './Spinner';

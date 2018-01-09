@@ -7,6 +7,7 @@ const FETCHING_USER = 'FETCHING_USER';
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS';
 const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE';
 const REMOVE_FETCHING = 'REMOVE_FETCHING';
+const ADD_USER = 'ADD_USER';
 
 const initialState = {
   isAuthed: false,
@@ -51,6 +52,14 @@ export const fetchingUserSuccess = (uid, user, timestamp) => ({
 export const removeFetching = () => ({
   type: REMOVE_FETCHING
 });
+
+export function addUser (user) {
+  return {
+    type: ADD_USER,
+    user,
+    lastUpdated: Date.now()
+  };
+}
 
 export function fetchAndHandleAuthedUser() {
   return function(dispatch) {
@@ -124,6 +133,17 @@ export default function users(state = initialState, action) {
         ...state,
         isFetching: false
       };
+    case ADD_USER:
+      return typeof state[action.user.uid] !== 'undefined'
+        ? state
+        : {
+          ...state,
+          [action.user.uid]: {
+            ...state[action.user.uid],
+            lastUpdated: action.lastUpdated,
+            info: action.user
+          }
+        };
     default:
       return state;
   }

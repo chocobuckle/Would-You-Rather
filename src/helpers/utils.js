@@ -1,3 +1,5 @@
+import { decisionsExpirationLength } from 'config/constants';
+
 export function formatUserInfo(name, avatar, uid) {
   return {
     name,
@@ -26,4 +28,17 @@ export function formatDecision(title, firstDecision, secondDecision, userInfo) {
     }
   };
   return decision;
+}
+
+export function formatTimestamp(timestamp) {
+  const date = new Date(timestamp);
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+}
+
+function getMilliseconds(timestamp) {
+  return new Date().getTime() - new Date(timestamp).getTime();
+}
+
+export function decisionsAreStale(timestamp) {
+  return getMilliseconds(timestamp) > decisionsExpirationLength;
 }
